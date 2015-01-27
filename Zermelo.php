@@ -107,7 +107,7 @@ class ZermeloAPI
 
 		$token = $this->getToken($id);
 
-		$raw = $this->callApi("api/v1/announcements", array('access_token' => $token, 'start' => $start, 'end' => $end));
+		$raw = $this->callApi("api/v2/announcements", array('access_token' => $token, 'start' => $start, 'end' => $end));
 
 		$json = json_decode($raw, true)['response'];
 
