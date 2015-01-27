@@ -35,7 +35,7 @@ class ZermeloAPI
 	{
 		if ($weeks == 1)
 		{
-			$start = strtotime('next monday');
+			$start = strtotime('today midnight');
 			$end = strtotime('next saturday');
 		} else {
 			$start = strtotime('+' . $weeks . ' weeks monday');
