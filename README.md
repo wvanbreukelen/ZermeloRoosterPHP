@@ -26,7 +26,7 @@ The authentation token is automatically saved to a cache file (cache.json).
 This method returns an array with all the information about the grid
 
 ```php
-$grid = $zermelo->getAnnouncementsAhead('user');
+$grid = $zermelo->getStudentGridAhead('user');
 ```
 
 #### Get a student grid for a specific week in the future
@@ -34,5 +34,5 @@ $grid = $zermelo->getAnnouncementsAhead('user');
 To get a grid for example three weeks ahead, please use the following code
 
 ```php
-$grid = $zermelo->getAnnouncementsAhead('user', 3)
+$grid = $zermelo->getStudentGridAhead('user', 3)
 ```
