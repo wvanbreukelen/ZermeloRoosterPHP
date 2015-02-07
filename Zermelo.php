@@ -158,7 +158,7 @@ class ZermeloAPI
 
 		$raw = $this->callApiPost("/api/v2/oauth/logout", array('access_token' => $token));
 
-		if ($raw == "")
+		if (strlen($raw) === 0)
 		{
 			return true;
 		}
