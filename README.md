@@ -19,7 +19,7 @@ Use the following method
 ```php
 $zermelo->grabAccessToken('user', 'code');
 ```
-The authentation token is automatically saved to a cache file (cache.json).
+The authentation token will be automatically saved to a cache file (cache.json).
 
 #### Get a student grid for the current week
 
