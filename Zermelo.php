@@ -189,11 +189,11 @@ class ZermeloAPI
 				throw new Exception("Cannot get data, access token is invalid!");
 
 				return false;
+			} else {
+				throw new Exception("Something went wrong. Error: " . $data['message']);
+
+				return false;
 			}
-
-			throw new Exception("Something went wrong. Error: " . $data['message']);
-
-			return false;
 		}
 
 		return true;
