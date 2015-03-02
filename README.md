@@ -20,6 +20,7 @@ Use the following method
 $zermelo->grabAccessToken('user', 'code');
 ```
 The authentation token will be automatically saved to a cache file (cache.json).
+If you received your authentation token, you can skip this method because the class will automatically check for the existance in "cache.json"
 
 #### Get a student grid for the current week
 
