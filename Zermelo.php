@@ -134,7 +134,7 @@ class ZermeloAPI
 
 		if (strpos($raw, 'Error report') !== false)
 		{
-			echo "Cannot grab access token, maybe the code is invalid?";
+			throw new Exception("Cannot grab access token, maybe the code is invalid?");
 			return null;
 		}
 
@@ -288,8 +288,7 @@ class ZermeloAPI
 			}
 		}
 
-		echo "Cannot get token for " . $id;
-		return null;
+		throw new Exception("Cannot get token for " . $id);
 	}
 
 	/**
