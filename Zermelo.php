@@ -35,11 +35,17 @@ class ZermeloAPI
 	{
 		if ($weeks == 1)
 		{
-			$start = strtotime('today midnight');
-			$end = strtotime('next saturday');
+			$start = strtotime('monday this week midnight');
+			$end = strtotime('saturday this week');
 		} else {
-			$start = strtotime('+' . $weeks . ' weeks monday');
-			$end = strtotime('+' . $weeks . ' weeks saturday');
+			if ($weeks == 2)
+			{
+				$start = strtotime('next week monday midnight');
+				$end = strtotime('next week saturday');
+			} else {
+				$start = strtotime('+' . $weeks . ' weeks monday midnight');
+				$end = strtotime('+' . $weeks . ' weeks saturday');
+			}
 		}
 		
 		return $this->getStudentGrid($id, $start, $end);
@@ -231,9 +237,16 @@ class ZermeloAPI
 	 */
 	protected function sortGrid(array $grid = array())
 	{
+		$timestamps = array();
+
 		foreach ($grid as $key => $node)
 		{
-			$timestamps[$key] = $node['start'];
+			if (in_array($node['start'], $timestamps))
+			{
+				unset($grid[$key]);
+			} else {
+				$timestamps[$key] = $node['start'];
+			}
 		}
 
 		array_multisort($timestamps, SORT_ASC, $grid);
