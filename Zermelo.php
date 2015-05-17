@@ -14,15 +14,19 @@ class ZermeloAPI
 	 * @var string
 	 */
 	protected $school;
+	
+	private $secure;
 
 	/**
 	 * Construct a new Zermelo instance, by any given school
 	 * 
 	 * @param string $school The school you want to add
 	 */
-	public function __construct($school)
+	public function __construct($school, $secure = false)
 	{
 		$this->setSchool(strtolower($school));
+		
+		$this->secure = $secure;
 	}
 
 	/**
@@ -319,7 +323,7 @@ class ZermeloAPI
 		$ch = curl_init();
 
 		curl_setopt($ch, CURLOPT_URL, $url . $data);
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->secure);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 		$result = curl_exec($ch);
@@ -345,7 +349,7 @@ class ZermeloAPI
 
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_POST, count($datafields));
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->secure);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
