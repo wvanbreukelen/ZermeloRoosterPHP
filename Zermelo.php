@@ -15,6 +15,10 @@ class ZermeloAPI
 	 */
 	protected $school;
 	
+	/**
+	 * Using HTTPS or not
+	 * @var boolean
+	 */
 	private $secure;
 
 	/**
