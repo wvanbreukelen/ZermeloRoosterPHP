@@ -72,7 +72,7 @@ class ZermeloAPI
 	 */
 	public function getStudentGrid($id, $start = null, $end = null)
 	{
-		// Set the start timed if they are not set
+		// Set the start times if they are not set
 
 		if (is_null($start)) $start = strtotime('last monday', strtotime('tomorrow'));
 		if (is_null($end)) $end = strtotime('last saturday', strtotime('tomorrow'));
@@ -128,8 +128,8 @@ class ZermeloAPI
 	 */
 	public function getAnnouncements($id, $start = null, $end = null)
 	{
-		// Set the start timed if they are not set
-		
+		// Set the start times if they are not set
+
 		if (is_null($start)) $start = strtotime('last monday', strtotime('tomorrow'));
 		if (is_null($end)) $end = strtotime('last saturday', strtotime('tomorrow'));
 
@@ -168,7 +168,7 @@ class ZermeloAPI
 
 		if (strpos($raw, 'Error report') !== false)
 		{
-			throw new Exception("Cannot grab access token, maybe the code is invalid?");
+			throw new Exception("Cannot grab access token, did you double checked the code from the portal?");
 			return null;
 		}
 
@@ -176,7 +176,7 @@ class ZermeloAPI
 
 		if ($save) $this->saveToken($user, $json['access_token']);
 
-		echo "Finished grabbing access token!";
+		echo 'Success :)';
 
 		return $json;
 	}

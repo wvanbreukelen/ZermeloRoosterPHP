@@ -44,3 +44,6 @@ Temporary Items
 
 # Cache files
 *.json
+
+# Ignore example.php for git issues
+example.php
