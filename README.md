@@ -1,5 +1,8 @@
 # ZermeloRoosterPHP
-A simple to use PHP wrapper for the Zermelo API to get student grids out of the Zermelo zportal.
+
+A PHP wrapper for the Zermelo API to get information out of the Zermelo zportal.
+
+Create a pull request if you like to contribute, or create if you have any issues so I can help you out :)
 
 This project does not have any connections to Zermelo itself!
 
