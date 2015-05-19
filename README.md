@@ -4,8 +4,6 @@ A PHP wrapper for the Zermelo API to get information out of the Zermelo zportal.
 
 Create a pull request if you like to contribute, or create if you have any issues so I can help you out :)
 
-This project does not have any connections to Zermelo itself!
-
 ### API
 To create a new API instance, you simply use the following code
 
@@ -59,3 +57,7 @@ Also the future
 ```php
 $messages = $zermelo->getAnnouncements('user', 3);
 ```
+
+#### Remarks
+
+This project does not have any connections to Zermelo itself! I cannot guarentee any expectations of the class.
