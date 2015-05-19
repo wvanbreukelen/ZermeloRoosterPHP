@@ -41,6 +41,8 @@ class ZermeloAPI
 	 */
 	public function getStudentGridAhead($id, $weeks = 1)
 	{
+		// Process weeks settings
+
 		if ($weeks == 1)
 		{
 			$start = strtotime('monday this week midnight');
@@ -56,6 +58,8 @@ class ZermeloAPI
 			}
 		}
 		
+		// Receive and return the student grid
+
 		return $this->getStudentGrid($id, $start, $end);
 	}
 
@@ -68,12 +72,20 @@ class ZermeloAPI
 	 */
 	public function getStudentGrid($id, $start = null, $end = null)
 	{
+		// Set the start timed if they are not set
+
 		if (is_null($start)) $start = strtotime('last monday', strtotime('tomorrow'));
 		if (is_null($end)) $end = strtotime('last saturday', strtotime('tomorrow'));
 
+		// Load the access token out of the cache
+
 		$token = $this->getToken($id);
 
+		// Call the API
+
 		$raw = $this->callApi("api/v2/appointments", array('access_token' => $token, 'start' => $start, 'end' => $end, 'user' => '~me'));
+
+		// Process the results
 
 		$json = json_decode($raw, true)['response'];
 
@@ -116,12 +128,20 @@ class ZermeloAPI
 	 */
 	public function getAnnouncements($id, $start = null, $end = null)
 	{
+		// Set the start timed if they are not set
+		
 		if (is_null($start)) $start = strtotime('last monday', strtotime('tomorrow'));
 		if (is_null($end)) $end = strtotime('last saturday', strtotime('tomorrow'));
 
+		// Load the access token out of the cache
+
 		$token = $this->getToken($id);
 
+		// Call the API
+
 		$raw = $this->callApi("api/v2/announcements", array('access_token' => $token, 'start' => $start, 'end' => $end));
+
+		// Process the results
 
 		$json = json_decode($raw, true)['response'];
 
