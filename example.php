@@ -4,6 +4,6 @@
 require('Zermelo.php');
 
 // Create a new Zermelo instance
-$zermelo = new ZermeloAPI('griftland');
+$zermelo = new ZermeloAPI('YOURSCHOOL');
 
-print_r($zermelo->getStudentGridAhead('120259'));
+print_r($zermelo->getStudentGridAhead('YOURSTUDENTID'));
