@@ -55,7 +55,7 @@ $messages = $zermelo->getAnnouncements('user');
 Also the future
 
 ```php
-$messages = $zermelo->getAnnouncements('user', 3);
+$messages = $zermelo->getAnnouncementsAhead('user', 3);
 ```
 
 #### Remarks
