@@ -41,7 +41,7 @@ If you received your authentation token, you can skip this method because the cl
 This method returns an array with all the information about the grid. The class does automatically optimize and sort the grid out. Also, some easy to use parameters like timestamps are added.
 
 ```php
-$grid = $zermelo->getStudentGridAhead('user');
+$grid = $zermelo->getStudentGrid('user');
 ```
 
 To get a grid for example three weeks ahead, please use the following code
