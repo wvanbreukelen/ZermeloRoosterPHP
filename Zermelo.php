@@ -28,9 +28,8 @@ class ZermeloAPI
 	 */
 	public function __construct($school, $secure = false)
 	{
-		$this->setSchool(strtolower($school));
-		
-		$this->secure = $secure;
+		$this->setSchool($school);
+		$this->setSecure($secure);
 	}
 
 	/**
@@ -97,6 +96,36 @@ class ZermeloAPI
 		}
 
 		return array();
+	}
+
+	public function getLessons($grid, $subject = '')
+	{
+		$lessons = array();
+
+		foreach ($grid as $lesson)
+		{
+			if (isset($lesson['subjects']) && in_array($subject, $lesson['subjects']))
+			{
+				$lessons[] = $lesson;
+			}
+		}
+
+		return $lessons;
+	}
+
+	public function resolveTeacherLessons($grid, $teacher)
+	{
+		$lessons = array();
+
+		foreach ($grid as $lesson)
+		{
+			if (isset($lesson['teachers']) && in_array($teacher, $lesson['teachers']))
+			{
+				$lessons[] = $lesson;
+			}
+		}
+
+		return $lessons;
 	}
 
 	/**
@@ -206,7 +235,12 @@ class ZermeloAPI
 	 */
 	public function setSchool($school)
 	{
-		$this->school = $school;
+		$this->school = strtolower($school);
+	}
+
+	public function setSecure($secure)
+	{
+		$this->secure = $secure;
 	}
 
 	/**
