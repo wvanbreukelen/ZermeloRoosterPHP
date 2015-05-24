@@ -4,6 +4,12 @@ A PHP wrapper for the Zermelo API to get information out of the Zermelo zportal.
 
 Create a pull request if you like to contribute, or create if you have any issues so I can help you out :)
 
+Also, have a look at the following rewrites in other languages:
+
+Python - https://github.com/wvanbreukelen/ZermeloRoosterPython
+
+C++ - https://github.com/JulianvDoorn/ZermeloAPICppVersion (managed by JulianvDoorn)
+
 ### API
 To create a new API instance, you simply use the following code
 
@@ -35,7 +41,7 @@ If you received your authentation token, you can skip this method because the cl
 This method returns an array with all the information about the grid. The class does automatically optimize and sort the grid out. Also, some easy to use parameters like timestamps are added.
 
 ```php
-$grid = $zermelo->getStudentGridAhead('user');
+$grid = $zermelo->getStudentGrid('user');
 ```
 
 To get a grid for example three weeks ahead, please use the following code
@@ -55,7 +61,7 @@ $messages = $zermelo->getAnnouncements('user');
 Also the future
 
 ```php
-$messages = $zermelo->getAnnouncements('user', 3);
+$messages = $zermelo->getAnnouncementsAhead('user', 3);
 ```
 
 #### Remarks
