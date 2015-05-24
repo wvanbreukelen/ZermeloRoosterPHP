@@ -98,34 +98,19 @@ class ZermeloAPI
 		return array();
 	}
 
-	public function getLessons($grid, $subject = '')
+	public function getClasses($grid, $subject = '')
 	{
-		$lessons = array();
-
-		foreach ($grid as $lesson)
-		{
-			if (isset($lesson['subjects']) && in_array($subject, $lesson['subjects']))
-			{
-				$lessons[] = $lesson;
-			}
-		}
-
-		return $lessons;
+		return $this->getGridPortion($grid, 'subjects', $subject);
 	}
 
-	public function resolveTeacherLessons($grid, $teacher)
+	public function resolveTeacherClasses($grid, $teacher)
 	{
-		$lessons = array();
+		return $this->getGridPortion($grid, 'teachers', $teacher);
+	}
 
-		foreach ($grid as $lesson)
-		{
-			if (isset($lesson['teachers']) && in_array($teacher, $lesson['teachers']))
-			{
-				$lessons[] = $lesson;
-			}
-		}
-
-		return $lessons;
+	public function resolveCancelledClasses($grid)
+	{
+		return $this->getGridPortion($grid, 'cancelled', 1);
 	}
 
 	/**
@@ -314,6 +299,27 @@ class ZermeloAPI
 		array_multisort($timestamps, SORT_ASC, $grid);
 
 		return $grid;
+	}
+
+	protected function getGridPortion($grid, $identifier, $search)
+	{
+		$classes = array();
+
+		foreach ($grid as $class)
+		{
+			if (isset($class[$identifier]))
+			{
+				if (is_array($class[$identifier]) && in_array($search, $class[$identifier]))
+				{
+					$classes[] = $class;
+				} else if ($class[$identifier] == $search) {
+					$classes[] = $class;
+				}
+				
+			}
+		}
+
+		return $classes;
 	}
 
 	/**
