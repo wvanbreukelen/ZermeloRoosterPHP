@@ -269,7 +269,23 @@ class ZermeloAPI
 
 			$grid[$id]['hour'] = round(($grid[$id]['start'] - strtotime(date('d-m-Y', $grid[$id]['start']) . ' 8:30')) / 3600);
 
-			if ($grid[$id]['hour'] == 0) $grid[$id]['hour'] = 1; 
+			if ($grid[$id]['hour'] == 0) $grid[$id]['hour'] = 1;
+
+			$i = 0;
+
+			while ($i < 8)
+			{
+				$timeid = 8 + $i;
+
+				if ($grid[$id]['hour'] == 1 && date('G:i', $grid[$id]['start']) != $i . ':30')
+				{
+					$grid[$id]['hour'] = $grid[$id]['hour'] + 1;
+				} else {
+					$i = 8;
+				}
+
+				$i = $i + 1;
+			}
 		}
 
 
