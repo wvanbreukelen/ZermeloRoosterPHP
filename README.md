@@ -2,6 +2,8 @@
 
 A PHP wrapper for the Zermelo API to get information out of the Zermelo zportal.
 
+Let me now what you did build with it, I am really curious :)
+
 Create a pull request if you like to contribute, or create if you have any issues so I can help you out :)
 
 Also, have a look at the following rewrites in other languages:
