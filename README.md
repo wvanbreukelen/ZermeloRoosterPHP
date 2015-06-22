@@ -14,6 +14,7 @@ C++ - https://github.com/JulianvDoorn/ZermeloAPICppVersion (managed by JulianvDo
 To create a new API instance, you simply use the following code
 
 ```php
+require('Cache.php');
 require('Zermelo.php');
 
 $zermelo = new ZermeloAPI('hereyourschoolname');

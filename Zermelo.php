@@ -1,5 +1,7 @@
 <?php
 
+use ZermeloAPI\Cache;
+
 /**
  * This Zermelo API class was developed by wvanbreukelen, 2015
  * This project does not have any connections/is related to Zermelo itself!
@@ -14,6 +16,12 @@ class ZermeloAPI
 	 * @var string
 	 */
 	protected $school;
+
+	/**
+	 * Token caching instance to use
+	 * @var object ZermeloAPI\Cache
+	 */
+	protected $cache;
 	
 	/**
 	 * Using HTTPS or not
@@ -26,10 +34,11 @@ class ZermeloAPI
 	 * 
 	 * @param string $school The school you want to add
 	 */
-	public function __construct($school, $secure = false)
+	public function __construct($school, $secure = false, $cache = null)
 	{
 		$this->setSchool($school);
 		$this->setSecure($secure);
+		$this->setCache($cache);
 	}
 
 	/**
@@ -78,7 +87,7 @@ class ZermeloAPI
 
 		// Load the access token out of the cache
 
-		$token = $this->getToken($id);
+		$token = $this->getCache()->getToken($id);
 
 		// Call the API
 
@@ -98,16 +107,33 @@ class ZermeloAPI
 		return array();
 	}
 
+	/**
+	 * Get all classes of a specific school subject in a grid
+	 * @param  string $grid    The containing grid
+	 * @param  string $subject The school subject
+	 * @return array
+	 */
 	public function getClasses($grid, $subject = '')
 	{
 		return $this->getGridPortion($grid, 'subjects', $subject);
 	}
 
+	/**
+	 * Resolves all classes of a specific teacher in a grid
+	 * @param  string $grid    The containing grid
+	 * @param  string $teacher The teacher
+	 * @return array
+	 */
 	public function resolveTeacherClasses($grid, $teacher)
 	{
 		return $this->getGridPortion($grid, 'teachers', $teacher);
 	}
 
+	/**
+	 * Resolves all cancelled classes in a grid
+	 * @param  string $grid The containing grid
+	 * @return array
+	 */
 	public function resolveCancelledClasses($grid)
 	{
 		return $this->getGridPortion($grid, 'cancelled', 1);
@@ -134,7 +160,7 @@ class ZermeloAPI
 	}
 
 	/**
-	 * Get announcements
+	 * Get all of the user announcements
 	 * @param  string $id    The student id
 	 * @param  string $start The start timestamp
 	 * @param  string $end   The end timestamp
@@ -149,7 +175,7 @@ class ZermeloAPI
 
 		// Load the access token out of the cache
 
-		$token = $this->getToken($id);
+		$token = $this->getCache()->getToken($id);
 
 		// Call the API
 
@@ -188,7 +214,7 @@ class ZermeloAPI
 
 		$json = json_decode($raw, true);
 
-		if ($save) $this->saveToken($user, $json['access_token']);
+		if ($save) $this->getCache()->saveToken($user, $json['access_token']);
 
 		echo 'Success :)';
 
@@ -198,11 +224,11 @@ class ZermeloAPI
 	/**
 	 * Invalidate a access token from the Zermelo API
 	 * @param  string $id The student id
-	 * @return bool       Succeeded
+	 * @return bool
 	 */
 	public function invalidateAccessToken($id)
 	{
-		$token = $this->getToken($id);
+		$token = $this->getCache()->getToken($id);
 
 		$raw = $this->callApiPost("/api/v2/oauth/logout", array('access_token' => $token));
 
@@ -223,6 +249,10 @@ class ZermeloAPI
 		$this->school = strtolower($school);
 	}
 
+	/**
+	 * Set the secure state of the application
+	 * @param string $secure The state boolean
+	 */
 	public function setSecure($secure)
 	{
 		$this->secure = $secure;
@@ -253,13 +283,12 @@ class ZermeloAPI
 	}
 
 	/**
-	 * Optimize a grid
+	 * Optimizes a grid
 	 * @param  array  $grid The grid to optimize
 	 * @return arrau        The optimized grid
 	 */
 	protected function optimizeGrid(array $grid = array())
 	{
-
 		$grid = $this->sortGrid($grid);
 
 		foreach ($grid as $id => $row)
@@ -287,8 +316,6 @@ class ZermeloAPI
 				$i = $i + 1;
 			}
 		}
-
-
 
 		return $grid;
 	}
@@ -331,7 +358,6 @@ class ZermeloAPI
 				} else if ($class[$identifier] == $search) {
 					$classes[] = $class;
 				}
-				
 			}
 		}
 
@@ -348,44 +374,19 @@ class ZermeloAPI
 		return "https://" . $this->school . ".zportal.nl/" . $uri;
 	}
 
-	/**
-	 * Save a token to the cache file
-	 * @param  string $user  The student id
-	 * @param  string $token The access token to save
-	 * @return mixed
-	 */
-	protected function saveToken($user, $token)
+	public function setCache($cache)
 	{
-		$current = array();
-
-		if (file_exists('cache.json'))
+		if (!$cache instanceof ZermeloAPI\Cache)
 		{
-			$current = json_decode(file_get_contents('cache.json'), true);
+			$cache = new ZermeloAPI\Cache;
 		}
 
-		$current['tokens'][$user] = $token;
-
-		file_put_contents('cache.json', json_encode($current));
+		$this->cache = $cache;
 	}
 
-	/**
-	 * Get a token from the cache file
-	 * @param  string $id The student id
-	 * @return string     The token
-	 */
-	public function getToken($id)
+	public function getCache()
 	{
-		if (file_exists('cache.json'))
-		{
-			$current = json_decode(file_get_contents('cache.json'), true);
-
-			if (isset($current['tokens'][$id]))
-			{
-				return $current['tokens'][$id];
-			}
-		}
-
-		throw new Exception("Cannot get token for " . $id);
+		return $this->cache;
 	}
 
 	/**
