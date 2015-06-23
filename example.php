@@ -1,6 +1,7 @@
 <?php
 
 // Including the Zermelo API PHP
+require('Cache.php');
 require('Zermelo.php');
 
 // Create a new Zermelo instance
