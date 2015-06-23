@@ -9,6 +9,7 @@
 - Added ZermeloAPI\Cache namespace to ZermeloAPI class
 - Changed caching references in ZermeloAPI class
 - Added file requirement to README
+- Require Cache.php in example file
 
 FUTURE ENHANCEMENTS
 
