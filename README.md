@@ -22,7 +22,7 @@ So add the following to your composer.json file
 }
 ```
 
-And running composer update
+And run composer update
 
 If you like, you can also use the build-in autoloader that I have created by using the following code
 
