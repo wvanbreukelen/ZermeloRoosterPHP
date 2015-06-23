@@ -1,0 +1,11 @@
+{
+    "name": "wvanbreukelen/zermelo-rooster-php",
+    "description": "A simple to use PHP wrapper for the Zermelo API",
+    "authors": [
+        {
+            "name": "wvanbreukelen",
+            "email": "alopski@gmail.com"
+        }
+    ],
+    "require": {}
+}
