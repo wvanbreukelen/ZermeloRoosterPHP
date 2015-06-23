@@ -10,10 +10,13 @@
 - Changed caching references in ZermeloAPI class
 - Added file requirement to README
 
-1.0.1.1
+1.0.2
 - Require Cache.php in example file
 - Fixed Cache.php spacing
+- Added composer
 
+1.1
+- Added composer
 
 FUTURE ENHANCEMENTS
 
