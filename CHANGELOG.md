@@ -12,6 +12,8 @@
 
 1.0.1.1
 - Require Cache.php in example file
+- Fixed Cache.php spacing
+
 
 FUTURE ENHANCEMENTS
 

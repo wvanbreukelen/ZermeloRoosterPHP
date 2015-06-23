@@ -47,3 +47,5 @@ Temporary Items
 
 # Ignore example.php for git issues
 example.php
+
+/vendor/
