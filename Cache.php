@@ -46,7 +46,7 @@ class Cache
 
 		if (isset($current['tokens'][$id]))
 		{
-			return $current['tokens'][$id];
+				return $current['tokens'][$id];
 		}
 
 		throw new Exception("Cannot get token for " . $id);
