@@ -29,6 +29,8 @@ If you like, you can also use the build-in autoloader that I have created by usi
 ```php
 require('custom_autoload.php');
 
+register_api();
+
 $zermelo = new ZermeloAPI('hereyourschoolname');
 ```
 
