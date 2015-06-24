@@ -15,8 +15,8 @@
 - Fixed Cache.php spacing
 - Added composer
 
-1.1
-- Added composer
+1.0.3
+tbd
 
 FUTURE ENHANCEMENTS
 
