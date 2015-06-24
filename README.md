@@ -10,12 +10,26 @@ Also, have a look at the following rewrites in other languages:
 Python - https://github.com/wvanbreukelen/ZermeloRoosterPython (abandoned for now)
 C++ - https://github.com/JulianvDoorn/ZermeloAPICppVersion (managed by JulianvDoorn)
 
-### API
-To create a new API instance, you simply use the following code
+### Installing and creating a API instance
+To create a new API instance, you may want to require the composer autoloader.
+So add the following to your composer.json file
+
+```json
+{
+    "require": {
+        "wvanbreukelen/zermelo-rooster-php": "1.0.*"
+    }
+}
+```
+
+And run composer update
+
+If you like, you can also use the build-in autoloader that I have created by using the following code
 
 ```php
-require('Cache.php');
-require('Zermelo.php');
+require('custom_autoload.php');
+
+register_api();
 
 $zermelo = new ZermeloAPI('hereyourschoolname');
 ```
