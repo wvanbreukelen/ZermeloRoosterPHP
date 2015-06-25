@@ -24,5 +24,3 @@ FUTURE ENHANCEMENTS
 
 - Create APIBuilder class for easily create ZermeloAPI instances by giving a simple JSON file
 	This could improve application conspectus and readability. Also, it's much cleaner to look at
-- Add a custom autoloader or developer can use composer
-- Fix the Class 'ZermeloAPI\Exception' not found message
