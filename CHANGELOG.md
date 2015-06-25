@@ -16,7 +16,9 @@
 - Added composer
 
 1.0.3
-tbd
+- Changed function method name from register_api to register_zermelo_api
+- Added custom autoloader, if the developer decides to not use composer
+- Fixed some grammar mistakes
 
 FUTURE ENHANCEMENTS
 
