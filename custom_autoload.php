@@ -1,6 +1,6 @@
 <?php
 
-function register_api()
+function register_zermelo_api()
 {
 	if (file_exists('Cache.json'))
 	{
