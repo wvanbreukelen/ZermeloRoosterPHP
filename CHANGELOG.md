@@ -19,6 +19,14 @@
 - Changed function method name from register_api to register_zermelo_api
 - Added custom autoloader, if the developer decides to not use composer
 - Fixed some grammar mistakes
+- Some small parameter rename in grabAccessToken method
+- Renamed parseDataString to parseHttpDataString, function of this method is now described more briefly
+- Added clearCache method
+- Documentated curl request
+- ..
+- ...
+- Some documentation changes
+
 
 FUTURE ENHANCEMENTS
 
