@@ -411,7 +411,7 @@ class ZermeloAPI
 	{
 		$url = $this->getBaseUrl($uri);
 
-		$data = $this->parseDataString($datafields);
+		$data = $this->parseHttpDataString($datafields);
 
 		$ch = curl_init();
 
@@ -436,7 +436,7 @@ class ZermeloAPI
 	{
 		$url = $this->getBaseUrl($uri);
 
-		$data = rtrim(ltrim($this->parseDataString($datafields), '?'), '&');
+		$data = rtrim(ltrim($this->parseHttpDataString($datafields), '?'), '&');
 
 		$ch = curl_init();
 
@@ -454,11 +454,11 @@ class ZermeloAPI
 	}
 
 	/**
-	 * Parse a data string from a datafields array
+	 * Parse a data HTTP string from a datafields array
 	 * @param  array  $datafields The datafields arrau
 	 * @return string             The parsed data string
 	 */
-	private function parseDataString(array $datafields = array())
+	private function parseHttpDataString(array $datafields = array())
 	{
 		$string = "?";
 
