@@ -406,6 +406,11 @@ class ZermeloAPI
 		throw new Exception("Cannot get cache instance, cache variable is no instance of ZermeloAPI\\Cache");
 	}
 
+	/**
+	 * Cleans out the whole cache, excepts a true boolean for verification
+	 * @param  boolean $cacheVerfifierBool Excepts a true boolean for verification
+	 * @return mixed Success or not
+	 */
 	public function cleanCache($cacheVerfifierBool = false)
 	{
 		// The cache verifier boolean makes sure that the cache is not accidently deleted
