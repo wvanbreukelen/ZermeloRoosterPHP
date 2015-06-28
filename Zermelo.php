@@ -201,7 +201,7 @@ class ZermeloAPI
 	 * @param  boolean $save Automatically save to access token to a cache file
 	 * @return mixed         The token results
 	 */
-	public function grabAccessToken($user, $code, $save = true)
+	public function grabAccessToken($user, $code, $saveToken = true)
 	{
 		$code = str_replace(' ', '', $code);
 
@@ -215,9 +215,10 @@ class ZermeloAPI
 
 		$json = json_decode($raw, true);
 
-		if ($save) $this->getCache()->saveToken($user, $json['access_token']);
-
-		echo 'Success :)';
+		if ($saveToken)
+		{
+			$this->getCache()->saveToken($user, $json['access_token']);
+		}
 
 		return $json;
 	}
@@ -266,15 +267,17 @@ class ZermeloAPI
 	 */
 	protected function validateData($data)
 	{
-		if ($data['status'] != "200")
+		$httpStatus = $data['status'];
+
+		if ($httpStatus != '200')
 		{
-			if ($data['status'] == "401")
+			if ($httpStatus == '401')
 			{
 				throw new Exception("Cannot get data, access token is invalid!");
 
 				return false;
 			} else {
-				throw new Exception("Something went wrong. Error: " . $data['message']);
+				throw new Exception("Data validation error: " . $data['message']);
 
 				return false;
 			}
@@ -375,6 +378,10 @@ class ZermeloAPI
 		return "https://" . $this->school . ".zportal.nl/" . $uri;
 	}
 
+	/**
+	 * Set the Zermelo API cache instance of token caching
+	 * @param object $cache ZermeloAPI\Cache
+	 */
 	public function setCache($cache)
 	{
 		if (!$cache instanceof ZermeloAPI\Cache)
@@ -385,6 +392,10 @@ class ZermeloAPI
 		$this->cache = $cache;
 	}
 
+	/**
+	 * Get the Zermelo API caching instance
+	 * @return object ZermeloAPI\Cache
+	 */
 	public function getCache()
 	{
 		return $this->cache;
