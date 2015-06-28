@@ -398,7 +398,19 @@ class ZermeloAPI
 	 */
 	public function getCache()
 	{
-		return $this->cache;
+		if ($this->cache instanceof ZermeloAPI\Cache)
+		{
+			return $this->cache;
+		}
+
+		throw new Exception("Cannot get cache instance, cache variable is no instance of ZermeloAPI\\Cache");
+	}
+
+	public function cleanCache($cacheVerfifierBool = false)
+	{
+		// The cache verifier boolean makes sure that the cache is not accidently deleted
+
+		$this->getCache()->cleanCache($cacheVerfifierBool);
 	}
 
 	/**
@@ -409,16 +421,24 @@ class ZermeloAPI
 	 */
 	private function callApi($uri, $datafields = array())
 	{
+		// Get the Zermelo HTTP base url
 		$url = $this->getBaseUrl($uri);
 
+		// Parse a HTTP data string
 		$data = $this->parseHttpDataString($datafields);
 
 		$ch = curl_init();
 
+		// Set the url with the attached data string
 		curl_setopt($ch, CURLOPT_URL, $url . $data);
+
+		// Using HTTPS
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->secure);
+
+		// Return the results, essential for the whole application
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
+		// Execute the curl request
 		$result = curl_exec($ch);
 
 		curl_close($ch);
@@ -434,18 +454,30 @@ class ZermeloAPI
 	 */
 	private function callApiPost($uri, $datafields = array())
 	{
+		// Get the Zermelo HTTP base url
 		$url = $this->getBaseUrl($uri);
 
+		// Trim the HTTP data string to convert it to an POST string
 		$data = rtrim(ltrim($this->parseHttpDataString($datafields), '?'), '&');
 
 		$ch = curl_init();
 
+		// Set the url
 		curl_setopt($ch, CURLOPT_URL, $url);
+
+		// Amount of POST parameters to send
 		curl_setopt($ch, CURLOPT_POST, count($datafields));
-		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->secure);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		// Set the POST parameters to their assigned values
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 
+		// Using HTTPS
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, $this->secure);
+
+		// Return the results, essential for the whole application
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		// Execute the curl request
 		$result = curl_exec($ch);
 
 		curl_close($ch);

@@ -46,10 +46,23 @@ class Cache
 
 		if (isset($current['tokens'][$id]))
 		{
-				return $current['tokens'][$id];
+			return $current['tokens'][$id];
 		}
 
 		throw new Exception("Cannot get token for " . $id);
+	}
+
+	public function clearCache($cacheVerfifierBool = false)
+	{
+		if ($cacheVerfifierBool == true)
+		{
+			// Clean out the whole cache.json file and replace it with an empty JSON array
+			
+			return file_put_contents($this->getFileLocation(), "{}");
+		} else {
+
+			throw new Exception("Are you sure you want to delete all token that exists in the cache. If so, pass true in first parameter");
+		}
 	}
 
 	/**
