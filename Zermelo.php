@@ -491,7 +491,7 @@ class ZermeloAPI
 	}
 
 	/**
-	 * Parse a data HTTP string from a datafields array
+	 * Parse a HTTP data string for GET and POST request from a datafields array
 	 * @param  array  $datafields The datafields arrau
 	 * @return string             The parsed data string
 	 */
