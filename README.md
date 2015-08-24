@@ -1,14 +1,9 @@
 # ZermeloRoosterPHP
 
 A PHP wrapper for the Zermelo API to get information out of the Zermelo zportal.
-Let me now what you did build with it, I am really curious :)
+Let me know what you did build with it. I am really curious :)
 
-Create a pull request if you like to contribute, or create if you have any issues so I can help you out :)
-
-Also, have a look at the following rewrites in other languages:
-
-Python - https://github.com/wvanbreukelen/ZermeloRoosterPython (abandoned for now)
-C++ - https://github.com/JulianvDoorn/ZermeloAPICppVersion (managed by JulianvDoorn)
+Create a pull request if you like to contribute, or create an issue if you expercience any issues so I can help you out :)
 
 ### Installing and creating a API instance
 To create a new API instance, you may want to require the composer autoloader.
