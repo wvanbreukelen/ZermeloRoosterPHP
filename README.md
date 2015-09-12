@@ -29,7 +29,7 @@ register_api();
 $zermelo = new ZermeloAPI('hereyourschoolname');
 ```
 
-It's also possible to connect with the HTTPS protocol enabled, if you webserver supports this feature, just add the true boolean to the constructor.
+It's also possible to connect with the HTTPS protocol enabled, if you webserver supports this feature, just add the true boolean to the class instance constructor
 
 ```php
 $zermelo = new ZermeloAPI('hereyourschoolname', true)
@@ -37,7 +37,7 @@ $zermelo = new ZermeloAPI('hereyourschoolname', true)
 
 
 #### Authentation tokens
-To receive a authentation token for a specific student, you will need a code, that you can get from the Zermelo zportral itself.
+To receive a authentation token for a specific student, you will need a code, that you can get from the Zermelo zportal itself.
 Use the following method
 
 ```php
