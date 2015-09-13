@@ -75,7 +75,7 @@ $grid = $zermelo->resolveTeacherClasses($grid, 'hlf');
 The first argument contains the grid that you received from the Zermelo servers (by using the getStudentGrid method)
 The second argument contains the teachers abbreviation of his/her last name.
 
-#### Cancelled Classes
+##### Cancelled Classes
 
 If you want to receive all of the cancelled classes in a grid, use the following method call
 
