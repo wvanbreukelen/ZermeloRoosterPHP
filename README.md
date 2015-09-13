@@ -60,6 +60,31 @@ To get a grid for example three weeks ahead, please use the following code
 $grid = $zermelo->getStudentGridAhead('user', 3)
 ```
 
+#### Classes
+
+For resolving classes with an additional rule involved, you can use use the resolveClasses method.
+
+##### Teachers
+
+By example, if you want to get some hours where a specific teacher is involved, use the following method call
+
+```php
+$grid = $zermelo->resolveTeacherClasses($grid, 'hlf');
+```
+
+The first argument contains the grid that you received from the Zermelo servers (by using the getStudentGrid method)
+The second argument contains the teachers abbreviation of his/her last name.
+
+#### Cancelled Classes
+
+If you want to receive all of the cancelled classes in a grid, use the following method call
+
+```php
+$grid = $zermelo->resolveCancelledClasses($grid);
+```
+
+The first argument contains the grid that you received from the Zermelo servers (by using the getStudentGrid method)
+
 #### Announcements
 
 It is possible to receive all of the user's announcements by using the following method
