@@ -93,6 +93,8 @@ class ZermeloAPI
 
 		$raw = $this->callApi("api/v2/appointments", array('access_token' => $token, 'start' => $start, 'end' => $end, 'user' => '~me'));
 
+		echo $raw;
+
 		// Process the results
 
 		$json = json_decode($raw, true)['response'];
