@@ -1,7 +1,6 @@
 <?php
 
 use ZermeloAPI\Cache;
-use Exception;
 
 /**
  * This Zermelo API class was developed by wvanbreukelen, 2015
