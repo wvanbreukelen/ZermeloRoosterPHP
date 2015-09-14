@@ -2,7 +2,7 @@
 
 function register_zermelo_api()
 {
-	if (file_exists('Cache.json'))
+	if (file_exists('Cache.php'))
 	{
 		include_once('Cache.php');
 	} else {
