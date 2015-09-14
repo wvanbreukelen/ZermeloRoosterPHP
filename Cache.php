@@ -76,6 +76,8 @@ class Cache
 		if (file_exists($location))
 		{
 			$this->fileLocation = $location;
+		} else {
+			throw new Exception("Cache file " . $location . " does not exists! Please create it manually!");
 		}
 	}
 
