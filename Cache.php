@@ -2,6 +2,8 @@
 
 namespace ZermeloAPI;
 
+use Exception;
+
 /**
  * This class is for caching API tokens to a JSON file so the user has to get a code out of the portal only one time
  */
