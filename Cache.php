@@ -29,7 +29,7 @@ class Cache
 	 * @param  string $token The access token to save
 	 * @return mixed
 	 */
-	protected function saveToken($user, $token)
+	public function saveToken($user, $token)
 	{
 		$current = json_decode(file_get_contents($this->getFileLocation()), true);
 
