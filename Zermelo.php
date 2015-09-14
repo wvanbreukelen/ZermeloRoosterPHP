@@ -85,6 +85,9 @@ class ZermeloAPI
 		if (is_null($start)) $start = strtotime('last monday', strtotime('tomorrow'));
 		if (is_null($end)) $end = strtotime('last saturday', strtotime('tomorrow'));
 
+		echo $start;
+		echo $end;
+
 		// Load the access token out of the cache
 
 		$token = $this->getCache()->getToken($id);
@@ -395,8 +398,6 @@ class ZermeloAPI
 		if (strlen($this->cache->getFileLocation()) < 1 || is_null($this->cache->getFileLocation()))
 		{
 		    throw new Exception("File location is not set! File location: " . $this->cache->getFileLocation());
-		} else {
-		    echo "Cache SET!";
 		}
 	}
 
