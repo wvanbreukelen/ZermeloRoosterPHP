@@ -83,10 +83,7 @@ class ZermeloAPI
 		// Set the start times if they are not set
 
 		if (is_null($start)) $start = strtotime('last monday', strtotime('tomorrow'));
-		if (is_null($end)) $end = strtotime('last saturday', strtotime('tomorrow'));
-
-		echo $start;
-		echo $end;
+		if (is_null($end)) $end = strtotime('next saturday', strtotime('tomorrow'));
 
 		// Load the access token out of the cache
 
@@ -95,8 +92,6 @@ class ZermeloAPI
 		// Call the API
 
 		$raw = $this->callApi("api/v2/appointments", array('access_token' => $token, 'start' => $start, 'end' => $end, 'user' => '~me'));
-
-		echo $raw;
 
 		// Process the results
 
