@@ -23,10 +23,7 @@
 - Renamed parseDataString to parseHttpDataString, function of this method is now described more briefly
 - Added clearCache method
 - Documentated curl request
-- ..
-- ...
 - Some documentation changes
-- 
 
 1.0.4
 - Fixed a couple of issues, see #10
