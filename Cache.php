@@ -82,13 +82,13 @@ class Cache
 				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");	
 			}
 			
-			if (!@fwrite($location, "{}"))
+			if (!@fwrite($file, "{}"))
 			{
 				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");
 			}
 			
 			// Successfully created the cache file
-			fclose($location);
+			fclose($file);
 		}
 		
 		$this->fileLocation = $location;
