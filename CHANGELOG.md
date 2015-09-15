@@ -26,6 +26,13 @@
 - ..
 - ...
 - Some documentation changes
+- 
+
+1.0.4
+- Fixed a couple of issues, see #10
+
+1.0.5
+- Automatically create cache files if they don't exist
 
 
 FUTURE ENHANCEMENTS
