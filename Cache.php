@@ -75,12 +75,23 @@ class Cache
 	 */
 	public function setFileLocation($location)
 	{
-		if (file_exists($location))
+		if (!file_exists($location))
 		{
-			$this->fileLocation = $location;
-		} else {
-			throw new Exception("Cache file " . $location . " does not exists! Please create it manually!");
+			if (!$file = @fopen($location))
+			{
+				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");	
+			}
+			
+			if (!@fwrite($location, "{}"))
+			{
+				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");
+			}
+			
+			// Successfully created the cache file
+			fclose($location);
 		}
+		
+		$this->fileLocation = $location;
 	}
 
 	/**
