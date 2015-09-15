@@ -10,3 +10,6 @@ register_zermelo_api();
 
 // Create a new Zermelo instance
 $zermelo = new ZermeloAPI('YOURSCHOOL');
+
+// Get a new access token using a username and code
+$zermelo->grabAccessToken('user', 'code');
