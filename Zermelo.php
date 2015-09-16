@@ -392,7 +392,7 @@ class ZermeloAPI
 		
 		if (strlen($this->cache->getFileLocation()) < 1 || is_null($this->cache->getFileLocation()))
 		{
-		    throw new Exception("File location is not set! File location: " . $this->cache->getFileLocation());
+		    throw new Exception("File location is not set! Current file location: " . $this->cache->getFileLocation());
 		}
 	}
 
