@@ -29,7 +29,7 @@ register_zermelo_api();
 $zermelo = new ZermeloAPI('hereyourschoolname');
 ```
 
-(Not working propably, see outgoing issue #11) It's also possible to connect with the HTTPS protocol enabled, if you webserver supports this feature, just add the true boolean to the class instance constructor
+(Not working probably, see outgoing issue #11) It's also possible to connect with the HTTPS protocol enabled, if your webserver supports this feature, just add the true boolean to the class instance constructor
 
 ```php
 $zermelo = new ZermeloAPI('hereyourschoolname', true)
@@ -37,7 +37,7 @@ $zermelo = new ZermeloAPI('hereyourschoolname', true)
 
 
 #### Authentation tokens
-To receive a authentation token for a specific student, you will need a code, that you can get from the Zermelo zportal itself.
+To receive an authentation token for a specific student, you will need a code, that you can get from the Zermelo zportal itself.
 Use the following method
 
 ```php
@@ -48,7 +48,7 @@ If you received your authentation token, you can skip this method because the cl
 
 #### Grids
 
-This method returns an array with all the information about the grid. The class does automatically optimizes and sort the grid out. Also, some easy to use parameters like timestamps are added.
+This method returns an array with all the information about the grid. The class automatically optimizes and sorts the grid out. Also, some easy to use parameters like timestamps are added.
 
 ```php
 $grid = $zermelo->getStudentGrid('user');
@@ -62,7 +62,7 @@ $grid = $zermelo->getStudentGridAhead('user', 3)
 
 #### Classes
 
-For resolving classes with an additional rule involved, you can use use the resolveClasses method.
+For resolving classes with an additional rule involved, you can use the resolveClasses method.
 
 ##### Teachers
 
