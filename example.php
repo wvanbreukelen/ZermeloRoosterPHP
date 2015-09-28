@@ -4,7 +4,7 @@
 //require('vendor/autoload.php');
 
 // Including the Zermelo API PHP using the build-in autoloader
-require('custom_autoload.php')
+require('custom_autoload.php');
 
 register_zermelo_api();
 
