@@ -5,6 +5,12 @@ Let me know what you did build with it. I am really curious :)
 
 Create a pull request if you like to contribute, or create an issue if you expercience any issues so I can help you out :)
 
+### License
+
+Using the MIT license.
+
+For all the forkers or users of the code, please add a (small) reference to the original code
+
 ### Installing and creating a API instance
 To create a new API instance, you may want to require the composer autoloader.
 So add the following to your composer.json file
