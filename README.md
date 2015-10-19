@@ -9,7 +9,7 @@ Create a pull request if you like to contribute, or create an issue if you exper
 
 Using the MIT license.
 
-For all the forkers or users of the code, please add a (small) reference to the original code
+For all the forkers or users of the code, please add a (small) reference to the original code. That would be nice, tnx!
 
 ### Installing and creating a API instance
 To create a new API instance, you may want to require the composer autoloader.
