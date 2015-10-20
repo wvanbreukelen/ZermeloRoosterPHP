@@ -109,7 +109,7 @@ Also the future
 $messages = $zermelo->getAnnouncementsAhead('user', 3);
 ```
 
-#### Formatting
+#### Formatting (only alpha)
 
 ##### XML
 
