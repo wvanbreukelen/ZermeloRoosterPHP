@@ -5,6 +5,11 @@ Let me know what you did build with it. I am really curious :)
 
 Create a pull request if you like to contribute, or create an issue if you expercience any issues so I can help you out :)
 
+### Status
+
+Repo is maintained. Code should be working properly, if not, please create a issue.
+Latest release: v1.0.6
+
 ### License
 
 Using the MIT license.
