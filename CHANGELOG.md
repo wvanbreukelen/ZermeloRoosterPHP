@@ -31,6 +31,8 @@
 1.0.5
 - Automatically create cache files if they don't exist
 
+1.0.6
+- Some small (documentation) fixes
 
 FUTURE ENHANCEMENTS
 
