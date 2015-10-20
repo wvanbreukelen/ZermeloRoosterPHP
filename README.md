@@ -111,7 +111,9 @@ $messages = $zermelo->getAnnouncementsAhead('user', 3);
 
 #### Formatting
 
-If you like, you can format the given array to XML code using the "formatXML" method.
+##### XML
+
+If you like, you can format the given grid array to XML code using the "formatXML" method.
 See code
 
 ```php
@@ -122,6 +124,15 @@ You can specify the root element by added a second parameters, like this
 
 ```php
 $xml = $zermelo->formatXML($grid, '<grid><grid/>');
+```
+
+##### JSON
+
+If you like, you can format the given grid array to JSON code using the "formatJSON" method.
+See code
+
+```php
+$xml = $zermelo->formatJSON($grid);
 ```
 
 #### Remarks
