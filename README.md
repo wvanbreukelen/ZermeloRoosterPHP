@@ -39,7 +39,7 @@ register_zermelo_api();
 $zermelo = new ZermeloAPI('hereyourschoolname');
 ```
 
-(Not working probably, see outgoing issue #11) It's also possible to connect with the HTTPS protocol enabled, if your webserver supports this feature, just add the true boolean to the class instance constructor
+(HTTPS not working probably, see outgoing issue #11) It's also possible to connect with the HTTPS protocol enabled, if your webserver supports this feature, just add the true boolean to the class instance constructor
 
 ```php
 $zermelo = new ZermeloAPI('hereyourschoolname', true)
