@@ -421,6 +421,45 @@ class ZermeloAPI
 
 		$this->getCache()->cleanCache($cacheVerfifierBool);
 	}
+	
+	/**
+	 * Format a grid to XML format
+	 * @param  string $grid The grid array itself
+	 * @return string The XML code
+	 */
+	public function formatXML($grid, $rootElement = '<grid><grid/>')
+	{
+		$array = json_decode($grid, true);
+		
+		return $this->formatXMLPortion($array, $rootElement);
+	}
+	
+	/**
+	 * Format a portion of a array to XML format
+	 * @param  string $array The array to convert
+	 * @param  object $xml   The optionally existing XML object
+	 * @return string        The converted XML code
+	 */
+	protected function formatXMLPortion($array, $xml = null)
+	{
+		$xml = new SimpleXMLElement('<grid><grid/>');
+		
+		foreach ($array as $i => $v)
+		{
+			// Check if nested array
+			if (is_array($x))
+			{
+			       // Nested array
+				$this->formatXMLPortion($v, $i, $xml->addChild($i));
+			} else {
+				// Is not nested, add directly to XML object
+				$xml->addChild($i, $v);
+			}
+		}
+		
+		// Convert the XML object to actual XML code and return the results
+		return $xml->asXML();
+	}
 
 	/**
 	 * Call the API by using the HTTP GET method
