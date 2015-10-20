@@ -424,14 +424,27 @@ class ZermeloAPI
 	
 	/**
 	 * Format a grid to XML format
-	 * @param  string $grid The grid array itself
+	 * @param  array $grid The grid array itself
 	 * @return string The XML code
 	 */
 	public function formatXML($grid, $rootElement = '<grid><grid/>')
 	{
-		$array = json_decode($grid, true);
-		
 		return $this->formatXMLPortion($array, $rootElement);
+	}
+	
+	/**
+	 * Format a grid to JSON format
+	 * @param   array $grid The grid array itself
+	 * @return  string The JSON code
+	 */
+	public function formatJSON($grid)
+	{
+		if (is_array($grid))
+		{
+			return json_encode($grid);
+		}
+		
+		throw new Exception("Cannot format grid to JSON format. Please give an {array} as variable type, not a {" . gettype($grid) . "}!");
 	}
 	
 	/**
