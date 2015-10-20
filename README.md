@@ -23,7 +23,11 @@ So add the following to your composer.json file
 }
 ```
 
-And run composer update
+And run
+
+```
+composer update
+```
 
 If you like, you can also use the build-in autoloader that I have created by using the following code
 
@@ -103,6 +107,21 @@ Also the future
 
 ```php
 $messages = $zermelo->getAnnouncementsAhead('user', 3);
+```
+
+#### Formatting
+
+If you like, you can format the given array to XML code using the "formatXML" method.
+See code
+
+```php
+$xml = $zermelo->formatXML($grid);
+```
+
+You can specify the root element by added a second parameters, like this
+
+```php
+$xml = $zermelo->formatXML($grid, '<grid><grid/>');
 ```
 
 #### Remarks
