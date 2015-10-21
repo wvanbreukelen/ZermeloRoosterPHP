@@ -1,6 +1,6 @@
 # ZermeloRoosterPHP
 
-A PHP wrapper for the Zermelo API to get information out of the Zermelo zportal.
+A PHP library for the Zermelo API to get information out of the Zermelo zportal.
 Let me know what you did build with it. I am really curious :)
 
 Create a pull request if you like to contribute, or create an issue if you expercience any issues so I can help you out :)
@@ -108,13 +108,13 @@ It is possible to receive all of the user's announcements by using the following
 $messages = $zermelo->getAnnouncements('user');
 ```
 
-Also the future
+Also the future (in weeks)
 
 ```php
 $messages = $zermelo->getAnnouncementsAhead('user', 3);
 ```
 
-#### Formatting (only alpha)
+#### Formatting (alpha)
 
 ##### XML
 
@@ -125,7 +125,7 @@ See code
 $xml = $zermelo->formatXML($grid);
 ```
 
-You can specify the root element by added a second parameters, like this
+You can specify the root element by adding a second parameter, like this
 
 ```php
 $xml = $zermelo->formatXML($grid, '<grid><grid/>');
