@@ -208,7 +208,7 @@ class ZermeloAPI
 
 		if (strpos($raw, 'Error report') !== false)
 		{
-			throw new Exception("Cannot grab access token, did you double checked the code from the portal?");
+			throw new Exception("Cannot grab access token, have you double checked the code from the portal?");
 			return null;
 		}
 
@@ -407,7 +407,7 @@ class ZermeloAPI
 			return $this->cache;
 		}
 
-		throw new Exception("Cannot get cache instance, cache variable is no instance of ZermeloAPI\\Cache");
+		throw new Exception("Cannot get cache instance, cache variable is not an instance of ZermeloAPI\\Cache");
 	}
 
 	/**
@@ -444,7 +444,7 @@ class ZermeloAPI
 			return json_encode($grid);
 		}
 		
-		throw new Exception("Cannot format grid to JSON format. Please give an {array} as variable type, not a {" . gettype($grid) . "}!");
+		throw new Exception("Cannot format grid to JSON format. Please give an {array} as a variable type, not a {" . gettype($grid) . "}!");
 	}
 	
 	/**
