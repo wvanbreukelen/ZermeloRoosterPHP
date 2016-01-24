@@ -201,31 +201,50 @@ class ZermeloAPI
 
 	/**
 	 * Grab a access token from the Zermelo API
-	 * @param  string  $user User to grab a token
-	 * @param  string  $code The code gained by the user itself
-	 * @param  boolean $save Automatically save to access token to a cache file
+	 * @param  string  $username Username
+	 * @param  string  $password User password
+	 * @param  boolean $saveToken Automatically save to access token to a cache file
 	 * @return mixed         The token results
 	 */
-	public function grabAccessToken($user, $code, $saveToken = true)
+	public function grabAccessToken($username, $password, $saveToken = true)
 	{
-		$code = str_replace(' ', '', $code);
-
+		$tokenId = $this->tokenId($username, $password);
+		$token = $this->getCache()->getToken($tokenId);
+		if($token){
+			$this->token = $token;
+			return $token;
+		}
+		
+		// Get authorization code
+		$raw = $this->callApiPostHeaders("api/v2/oauth", array(
+			'username' => $username, 
+			'password' => $password, 
+			'client_id' => 'OAuthPage', 
+			'redirect_uri' => '/main/----success----', 
+			'scope' => '', // must be empty
+			'state' => '', // must be empty
+			'response_type' => 'code'
+		));
+		if(!preg_match('/----success----\?code=([a-zA-Z0-9-]+)/', $raw, $matches) || count($matches) < 2){
+			return;
+		}
+		$code = str_replace(' ', '', $matches[1]);
+		
+		// Get access token from authoorization code
 		$raw = $this->callApiPost("api/v2/oauth/token", array('grant_type' => 'authorization_code', 'code' => $code));
-
-		if (strpos($raw, 'Error report') !== false)
-		{
-			throw new Exception("Cannot grab access token, have you double checked the code from the portal?");
-			return null;
+		if (strpos($raw, 'Error report') !== false){
+			return;
 		}
-
 		$json = json_decode($raw, true);
-
-		if ($saveToken)
-		{
-			$this->getCache()->saveToken($user, $json['access_token']);
+		
+		// Save to cache
+		if ($saveToken && !empty($json['access_token'])){
+			$this->getCache()->saveToken($tokenId, $json['access_token']);
 		}
-
-		return $json;
+		
+		// Set on current object
+		$this->token = $json['access_token'];
+		return $this->token;
 	}
 
 	/**
