@@ -347,6 +347,10 @@ class ZermeloAPI
 					unset($grid[$key]);
 				} else {
 					$timestamps[$key] = $node['start'];
+					if ($node['cancelled'] == true)
+					{
+						unset($grid[$key]);
+					}
 				}
 			} else {
 				$timestamps[$key] = $node['start'];
