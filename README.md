@@ -8,7 +8,8 @@ Create a pull request if you like to contribute, or create an issue if you exper
 ### Status
 
 Repo is maintained. Code should be working properly, if not, please create a issue.
-Latest release: v1.0.6
+
+Latest release: v1.0.8-dev
 
 ### License
 
@@ -52,18 +53,17 @@ $zermelo = new ZermeloAPI('hereyourschoolname', true)
 
 
 #### Authentation tokens
-To receive an authentation token for a specific student, you will need a code, that you can get from the Zermelo zportal itself.
-Use the following method
+To receive an authentation token for a specific student, please pass the username and password of that user. ZermeloRoosterPHP will attempt to get the authentation code by the given credentials, using oauth.
 
 ```php
-$zermelo->grabAccessToken('user', 'code');
+$zermelo->grabAccessToken('username', 'password');
 ```
-The authentation token will be automatically saved to a cache file (cache.json).
-If you received your authentation token, you can skip this method because the class will automatically check for the existance in "cache.json"
+The authentation token will be automatically saved to a cache file, cache.json in the root folder.
+If you received your authentation token, you can skip this method because the API will automatically check for the existance in "cache.json"
 
 #### Grids
 
-This method returns an array with all the information about the grid. The class automatically optimizes and sorts the grid out. Also, some easy to use parameters like timestamps are added.
+This method returns an array with all the information about the grid. The API automatically optimizes and sorts the grid out. Also, some easy to use parameters like timestamps are added.
 
 ```php
 $grid = $zermelo->getStudentGrid('user');
@@ -77,7 +77,7 @@ $grid = $zermelo->getStudentGridAhead('user', 3)
 
 #### Classes
 
-For resolving classes with an additional rule involved, you can use the resolveClasses method.
+For finding classes with an additional rule involved, you can use the resolveClasses method.
 
 ##### Teachers
 
