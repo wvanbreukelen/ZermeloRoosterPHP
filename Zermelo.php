@@ -30,6 +30,11 @@ class ZermeloAPI
 	private $secure;
 
 	/**
+	 * Allow double hours to be listed in the grid, default is false
+	 */
+	const ALLOW_DOUBLE_HOURS = false;
+
+	/**
 	 * Construct a new Zermelo instance, by any given school
 	 * 
 	 * @param string $school The school you want to add
@@ -136,6 +141,7 @@ class ZermeloAPI
 	 */
 	public function resolveCancelledClasses($grid)
 	{
+
 		return $this->getGridPortion($grid, 'cancelled', 1);
 	}
 
@@ -331,12 +337,17 @@ class ZermeloAPI
 	protected function sortGrid(array $grid = array())
 	{
 		$timestamps = array();
-
+		
 		foreach ($grid as $key => $node)
 		{
 			if (in_array($node['start'], $timestamps))
 			{
-				unset($grid[$key]);
+				if (self::ALLOW_DOUBLE_HOURS == false)
+				{
+					unset($grid[$key]);
+				} else {
+					$timestamps[$key] = $node['start'];
+				}
 			} else {
 				$timestamps[$key] = $node['start'];
 			}
