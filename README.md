@@ -9,7 +9,10 @@ Create a pull request if you like to contribute, or create an issue if you exper
 
 Repo is maintained. Code should be working properly, if not, please create a issue.
 
-Latest release: v1.0.8-dev
+### Releases
+
+Current stable release: v1.0.6
+Latest pre-release: v1.0.8-dev
 
 ### License
 
