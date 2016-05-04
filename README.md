@@ -141,7 +141,7 @@ If you like, you can format the given grid array to JSON code using the "formatJ
 See code
 
 ```php
-$xml = $zermelo->formatJSON($grid);
+$json = $zermelo->formatJSON($grid);
 ```
 
 #### Remarks
