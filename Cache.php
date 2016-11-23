@@ -62,7 +62,7 @@ class Cache
 		if ($cacheVerfifierBool == true)
 		{
 			// Clean out the whole cache.json file and replace it with an empty JSON array
-			
+
 			return file_put_contents($this->getFileLocation(), "{}");
 		}
 
@@ -77,20 +77,20 @@ class Cache
 	{
 		if (!file_exists($location))
 		{
-			if (!$file = @fopen($location))
+			if (!$file = @fopen($location, 'w'))
 			{
-				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");	
+				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");
 			}
-			
+
 			if (!@fwrite($file, "{}"))
 			{
 				throw new Exception("Cache file " . $location . " does not exists! I tried to create it manually, but this failed");
 			}
-			
+
 			// Successfully created the cache file
 			fclose($file);
 		}
-		
+
 		$this->fileLocation = $location;
 	}
 
