@@ -54,7 +54,12 @@ class Cache
 			return $current['tokens'][$id];
 		}
 
-		throw new Exception("Cannot get token for " . $id);
+		throw new Exception("Cannot get token for " . $id . ". JSON contents: " . $current);
+	}
+
+	public function getRaw()
+	{
+		return file_get_contents($this->getFileLocation(), true);
 	}
 
 	public function clearCache($cacheVerfifierBool = false)
