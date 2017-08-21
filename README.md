@@ -146,4 +146,4 @@ $json = $zermelo->formatJSON($grid);
 
 #### Remarks
 
-This project does not have any connections to Zermelo itself! I cannot guarentee any expectations of the class.
+This project does not have any connections to Zermelo itself! I cannot guarentee any expectations of the library.
