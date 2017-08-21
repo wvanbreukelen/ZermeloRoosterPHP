@@ -28,7 +28,7 @@ So add the following to your composer.json file
 ```json
 {
     "require": {
-        "wvanbreukelen/zermelo-rooster-php": "1.0.*"
+        "wvanbreukelen/zermelo-rooster-php": "1.0.6"
     }
 }
 ```
